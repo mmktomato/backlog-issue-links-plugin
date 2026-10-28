@@ -1,0 +1,5 @@
+{
+  "name": "backlog-issue-links-plugin",
+  "owner": { "name": "mmktomato" },
+  "plugins": [{ "name": "backlog-issue-links-plugin", "source": "./" }]
+}

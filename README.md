@@ -11,10 +11,16 @@ claude.ai (chat and Cowork) is not supported, because mods run only in Claude Co
 
 ## Installation
 
-Clone this repository:
+At the prompt of a Claude Code session in a terminal:
+
+```
+/plugin install backlog-issue-links-plugin --marketplace mmktomato/backlog-issue-links-plugin
+```
+
+Or from a shell:
 
 ```sh
-git clone https://github.com/mmktomato/backlog-issue-links-plugin.git
+claude plugin install backlog-issue-links-plugin --marketplace mmktomato/backlog-issue-links-plugin
 ```
 
 Then add the following to the `env` block of `~/.claude/settings.json`:
@@ -22,15 +28,11 @@ Then add the following to the `env` block of `~/.claude/settings.json`:
 ```json
 {
   "env": {
-    "CLAUDE_CODE_PLUGIN_DIRS": "/path/to/backlog-issue-links-plugin",
     "BACKLOG_PREFIX": "https://example.backlog.com"
   }
 }
 ```
 
-- `CLAUDE_CODE_PLUGIN_DIRS`
-    - The absolute path of the cloned folder. `~` is allowed.
-    - To load several plugin folders, separate them with `:`.
 - `BACKLOG_PREFIX`
     - The URL of your Backlog space. A trailing slash is ignored.
     - If it is unset or empty, the plugin does nothing.
@@ -46,6 +48,10 @@ Links are drawn as terminal hyperlinks. Claude Desktop, iTerm2 and Ghostty show 
   }
 }
 ```
+
+## Development
+
+See [AGENTS.md](AGENTS.md).
 
 ## License
 

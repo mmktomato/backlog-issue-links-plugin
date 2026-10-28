@@ -30,7 +30,14 @@ Then add the following to the `env` block of `~/.claude/settings.json`:
 }
 ```
 
-If the plugin is also installed from the marketplace, uninstall or disable it, so it is not loaded twice.
+- `CLAUDE_CODE_PLUGIN_DIRS`
+    - The absolute path of the cloned folder. `~` is allowed.
+    - To load several plugin folders, separate them with `:`.
+- `BACKLOG_PREFIX`
+    - The URL of your Backlog space. A trailing slash is ignored.
+    - If it is unset or empty, the plugin does nothing.
+
+**If the plugin is also installed from the marketplace, uninstall or disable it, so it is not loaded twice.**
 
 ## Commands
 

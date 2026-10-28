@@ -7,6 +7,8 @@ A Claude plugin ([mod](https://code.claude.com/docs/en/plugins/mods/overview)) t
 - Terminal: Claude Code v2.1.287 or later
 - Claude Desktop: the bundled Claude Code v2.1.286 or later
 
+claude.ai (chat and Cowork) is not supported, because mods run only in Claude Code.
+
 ## Installation
 
 Clone this repository:

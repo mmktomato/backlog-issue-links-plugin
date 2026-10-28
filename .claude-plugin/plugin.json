@@ -1,0 +1,5 @@
+{
+  "name": "backlog-issue-links-plugin",
+  "version": "0.1.0",
+  "description": "Turns Backlog issue keys in Claude's replies into links to the issue page"
+}

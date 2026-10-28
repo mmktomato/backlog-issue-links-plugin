@@ -1,0 +1,12 @@
+{
+  "name": "backlog-issue-links-plugin",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "test": "claude plugin test ."
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}

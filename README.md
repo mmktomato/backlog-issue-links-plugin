@@ -4,8 +4,9 @@ A Claude plugin ([mod](https://code.claude.com/docs/en/plugins/mods/overview)) t
 
 ## Requirements
 
-- Terminal: Claude Code v2.1.287 or later
-- Claude Desktop: the bundled Claude Code v2.1.286 or later
+- Claude Code v2.1.287 or later
+    - Or Claude Desktop: the bundled Claude Code v2.1.286 or later
+- `git` command, which Claude Code uses to fetch the plugin
 
 claude.ai (chat and Cowork) is not supported, because mods run only in Claude Code.
 

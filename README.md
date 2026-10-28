@@ -11,19 +11,21 @@ claude.ai (chat and Cowork) is not supported, because mods run only in Claude Co
 
 ## Installation
 
-At the prompt of a Claude Code session in a terminal:
+From a shell, replacing `https://example.backlog.com` with the URL of your Backlog space:
+
+```sh
+claude plugin install backlog-issue-links-plugin \
+  --marketplace mmktomato/backlog-issue-links-plugin \
+  --config backlog_prefix=https://example.backlog.com
+```
+
+Or at the prompt of a Claude Code session in a terminal:
 
 ```
 /plugin install backlog-issue-links-plugin --marketplace mmktomato/backlog-issue-links-plugin
 ```
 
-Or from a shell:
-
-```sh
-claude plugin install backlog-issue-links-plugin --marketplace mmktomato/backlog-issue-links-plugin
-```
-
-During the install, enter the URL of your Backlog space as **Backlog URL**. To set or change it later, open `/plugin`, select the plugin on the **Installed** tab and choose **Configure options**.
+During that install, enter the URL of your Backlog space as **Backlog URL**. To set or change it later, open `/plugin`, select the plugin on the **Installed** tab and choose **Configure options**.
 
 - A trailing slash is ignored.
 - If it is empty, the `BACKLOG_PREFIX` environment variable is used instead. If both are empty, the plugin does nothing.

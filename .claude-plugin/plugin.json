@@ -1,5 +1,12 @@
 {
   "name": "backlog-issue-links-plugin",
   "version": "0.1.0",
-  "description": "Turns Backlog issue keys in Claude's replies into links to the issue page"
+  "description": "Turns Backlog issue keys in Claude's replies into links to the issue page",
+  "userConfig": {
+    "backlog_prefix": {
+      "type": "string",
+      "title": "Backlog URL",
+      "description": "The URL of your Backlog space, such as https://example.backlog.com"
+    }
+  }
 }

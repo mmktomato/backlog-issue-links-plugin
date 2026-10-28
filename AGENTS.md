@@ -8,6 +8,8 @@ A Claude plugin (mod) that links Backlog issue keys in Claude's replies.
     - The hooks module. A `ui.render` hook on `AssistantMessage` rewrites the text.
 - `hooks/register.test.tsx`
     - Tests, run by `claude plugin test`.
+- `.claude-plugin/plugin.json`
+    - The manifest. `userConfig` declares the `backlog_prefix` option.
 - `.claude-plugin/types/`
     - Types written by Claude Code when it loads the plugin. Git-ignored.
 
@@ -37,7 +39,7 @@ Then add the following to the `env` block of `~/.claude/settings.json`:
     - The URL of your Backlog space. A trailing slash is ignored.
     - If it is unset or empty, the plugin does nothing.
 
-**If the plugin is also installed from the marketplace, uninstall or disable it, so it is not loaded twice.**
+**If the plugin is also installed from the marketplace, disable it, so it is not loaded twice.**
 
 ## Commands
 
@@ -52,5 +54,5 @@ claude plugin validate .
 
 - Issue keys match `[A-Z0-9_]+-[0-9]+`.
 - Keys inside code fences, code spans, links and URLs are left as they are, following CommonMark.
-- With `BACKLOG_PREFIX` unset or empty, the plugin does nothing.
+- The Backlog URL comes from the `backlog_prefix` option, then from `BACKLOG_PREFIX`. With both unset or empty, the plugin does nothing.
 - Add a test for every change to the matching rules.

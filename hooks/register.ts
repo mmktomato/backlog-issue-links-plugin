@@ -1,7 +1,10 @@
-import type { EngineInterface, Register } from 'claude-code'
+import type { EngineInterface, PluginOptions, Register } from 'claude-code'
 
-const getPrefix = async ($: EngineInterface) =>
-  (await $.env.get('BACKLOG_PREFIX'))?.trim().replace(/\/+$/, '') || undefined
+const normalizePrefix = (value: unknown) =>
+  (typeof value === 'string' && value.trim().replace(/\/+$/, '')) || undefined
+
+const getPrefix = async ($: EngineInterface, options: PluginOptions) =>
+  normalizePrefix(options.backlog_prefix) ?? normalizePrefix(await $.env.get('BACKLOG_PREFIX'))
 
 // Code fences, code spans, links and URLs are matched whole so keys inside them stay as they are.
 const TOKEN =
@@ -12,11 +15,11 @@ const ISSUE_KEY = /^[A-Z0-9_]+-\d+$/
 export const linkIssueKeys = (text: string, prefix: string): string =>
   text.replace(TOKEN, token => (ISSUE_KEY.test(token) ? `[${token}](${prefix}/view/${token})` : token))
 
-export const register: Register = on => {
+export const register: Register = (on, options) => {
   let prefix: Promise<string | undefined> | undefined
 
   on('ui.render', { component: 'AssistantMessage' }, async ($, e, next) => {
-    const p = await (prefix ??= getPrefix($))
+    const p = await (prefix ??= getPrefix($, options))
     if (!p) return next(e)
     return next({ ...e, props: { ...e.props, text: linkIssueKeys(e.props.text, p) } })
   })

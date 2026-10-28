@@ -1,3 +1,4 @@
+import type { PluginOptions } from 'claude-code'
 import { expect, test } from 'claude-code/testing'
 import { linkIssueKeys } from './register'
 
@@ -58,13 +59,22 @@ const MESSAGE = {
   props: { text: 'See PROJ-1.', isFirstOfReply: true },
 } as const
 
-for (const [env, expected] of [
-  [undefined, 'See PROJ-1.'],
-  ['', 'See PROJ-1.'],
-  [' ', 'See PROJ-1.'],
-  [' https://example.backlog.com/ ', 'See [PROJ-1](https://example.backlog.com/view/PROJ-1).'],
+const LINKED = 'See [PROJ-1](https://example.backlog.com/view/PROJ-1).'
+
+for (const [option, env, expected] of [
+  [undefined, undefined, 'See PROJ-1.'],
+  [undefined, '', 'See PROJ-1.'],
+  [undefined, ' ', 'See PROJ-1.'],
+  [undefined, ' https://example.backlog.com/ ', LINKED],
+  ['', undefined, 'See PROJ-1.'],
+  [' ', undefined, 'See PROJ-1.'],
+  [' https://example.backlog.com/ ', undefined, LINKED],
+  ['', 'https://example.backlog.com', LINKED],
+  ['https://example.backlog.com', 'https://other.backlog.com', LINKED],
 ] as const) {
-  test(`renders with BACKLOG_PREFIX=${JSON.stringify(env)}`, async ($, on) => {
+  const options: PluginOptions = option === undefined ? {} : { backlog_prefix: option }
+  const name = `renders with backlog_prefix=${JSON.stringify(option)} and BACKLOG_PREFIX=${JSON.stringify(env)}`
+  test(name, { options }, async ($, on) => {
     on('env.get', () => ({ value: env }))
     on('ui.render', { component: 'AssistantMessage' }, ($, e) => {
       const { Text } = $.ui.resolve(e)

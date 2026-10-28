@@ -23,19 +23,10 @@ Or from a shell:
 claude plugin install backlog-issue-links-plugin --marketplace mmktomato/backlog-issue-links-plugin
 ```
 
-Then add the following to the `env` block of `~/.claude/settings.json`:
+During the install, enter the URL of your Backlog space as **Backlog URL**. To set or change it later, open `/plugin`, select the plugin on the **Installed** tab and choose **Configure options**.
 
-```json
-{
-  "env": {
-    "BACKLOG_PREFIX": "https://example.backlog.com"
-  }
-}
-```
-
-- `BACKLOG_PREFIX`
-    - The URL of your Backlog space. A trailing slash is ignored.
-    - If it is unset or empty, the plugin does nothing.
+- A trailing slash is ignored.
+- If it is empty, the `BACKLOG_PREFIX` environment variable is used instead. If both are empty, the plugin does nothing.
 
 ## Terminal support
 

@@ -11,6 +11,27 @@ A Claude plugin (mod) that links Backlog issue keys in Claude's replies.
 - `.claude-plugin/types/`
     - Types written by Claude Code when it loads the plugin. Git-ignored.
 
+## Development setup
+
+Clone this repository:
+
+```sh
+git clone git@github.com:mmktomato/backlog-issue-links-plugin.git
+```
+
+Then add the following to the `env` block of `~/.claude/settings.json`:
+
+```json
+{
+  "env": {
+    "CLAUDE_CODE_PLUGIN_DIRS": "/path/to/backlog-issue-links-plugin",
+    "BACKLOG_PREFIX": "https://example.backlog.com"
+  }
+}
+```
+
+If the plugin is also installed from the marketplace, uninstall or disable it, so it is not loaded twice.
+
 ## Commands
 
 ```sh

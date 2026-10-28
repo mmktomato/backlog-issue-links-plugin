@@ -33,7 +33,9 @@ During that install, enter the URL of your Backlog space as **Backlog URL**. To 
 
 ## Terminal support
 
-Links are drawn as terminal hyperlinks. Claude Desktop, iTerm2 and Ghostty show them as they are. Terminal.app needs `FORCE_HYPERLINK` to be set:
+Links are drawn as terminal hyperlinks. Claude Desktop and terminals such as iTerm2 and Ghostty show them as they are.
+
+Terminal.app needs `FORCE_HYPERLINK` to be set in the `env` block of `~/.claude/settings.json`:
 
 ```json
 {
